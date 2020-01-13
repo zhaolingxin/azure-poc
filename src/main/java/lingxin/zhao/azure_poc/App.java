@@ -1,4 +1,4 @@
-package com.mastercard.ess.ds.azure_poc;
+package lingxin.zhao.azure_poc;
 
 /**
  * Hello world!
