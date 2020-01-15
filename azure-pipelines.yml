@@ -35,16 +35,6 @@ stages:
       inputs:
         mavenPomFile: 'pom.xml'
 
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
-
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: drop
-
 - stage: Deploy
   displayName: Deploy stage
   dependsOn: Build
@@ -64,5 +54,5 @@ stages:
             inputs:
               azureSubscription: $(azureSubscription)
               appType: webAppLinux
-              appName: $(webAppName)
+              appName: lingxin-azure-poc
               package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
